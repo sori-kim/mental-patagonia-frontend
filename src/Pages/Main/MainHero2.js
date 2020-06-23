@@ -1,17 +1,21 @@
 import React from "react";
 import styled from "styled-components";
 import {WIDTH800} from "../../Config"
+import Fade from "react-reveal/Fade";
+
 
 const MainHero2 = () => {
   return (
     <HeroWrap>
       <IMG />
       <HeroContent>
+      <Fade bottom cascade delay={500} duration={1500}>
         <Title>Sunnyside Up</Title>
         <Desc>
         Last November, Fitz Caldwell (age 6) finished his first multipitch climb, Sunnyside Bench in Yosemite National Park. He did it with his dad, Tommy.
         </Desc>
         <Button>Read</Button>
+        </Fade>
       </HeroContent>
     </HeroWrap>
   );

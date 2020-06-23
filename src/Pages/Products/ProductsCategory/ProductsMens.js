@@ -55,8 +55,9 @@ const ProductsMens = (props) => {
         setList(list);
     }
 
-    const getData = (offsetVal) => {
-        fetch(`http://10.58.5.130:8080/product?offset=${offsetVal}`)
+
+    const getData = (offsetVal) => {        
+        fetch(`http://3.34.144.236:8080/product?offset=${offsetVal}`)
         .then((res) => res.json())
         .then((res) => setContentList(res.data));
     } 

@@ -29,12 +29,8 @@ const ProductsFilterContent =({chosenColor, list, setNum}) => {
         setPageId(e.id)
         console.log('들어옴')
     } 
-
     // 필터링
     // setFilterSelect([...filterSelect, color]);
-    
-  console.log("pageId",pageId);
-
     return(
         <>
       <Link to={`/products/details/${pageId}`} className="toDatails">
@@ -56,6 +52,7 @@ const ProductsFilterContent =({chosenColor, list, setNum}) => {
              </Filter>
            )}
         </Content>
+        </Link>
         <Wrap>
             <Prev onClick = {() => setNum(0)}>
                 <i class="fas fa-chevron-left"></i>
@@ -64,7 +61,7 @@ const ProductsFilterContent =({chosenColor, list, setNum}) => {
                 <i class="fas fa-chevron-right"></i>
             </Next>
          </Wrap>
-         </Link>
+      
         </>
     );
 };
@@ -155,9 +152,7 @@ const Circle = styled.li`
     display:flex;
     align-content:flex-end;
     background-color: ${({red, green, blue}) => (`rgb(${red}, ${green}, ${blue})`)};
-    
 `;
-
 
 const Wrap = styled.div`
     display: flex;

@@ -39,7 +39,7 @@ const HoverHeaderShop = (props) => {
           <CategoryMenDetailUl>
             {List.menData &&
               List.menData.map((re, id) => (
-                <Link to={"/products/details"} key={id}>
+                <Link to={"/"} key={id}>
                   <MenDetailLi href="/">{re.text}</MenDetailLi>
                 </Link>
               ))}
