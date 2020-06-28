@@ -21,8 +21,8 @@
 
 
 ## 기능
-- 회원가입 및 로그인 (JWT Access Token 관리) 
-- 메인페이지 및 메뉴 상세 페이지 UI 구현 : 라이브러리 없이 순수 React hooks로 슬라이더 구현 
+- 다음 카카오 소셜 로그인 구현 (카카오 로그인 api 및 JWT Access Token 관리) 
+- 메인페이지 및 메뉴 상세 페이지 UI 구현 : 라이브러리 없이 순수 React hooks로 슬라이더 구현 및 react-reveal 활용하여 animation 적용 
 - fetch를 활용한 백앤드와 http 통신 ( GET / POST)
 - React Router 페이지 라우팅 기능 구현 : Url-parameter를 활용하여 상세 페이지 백앤드 데이터 연결
 - 상품 카테고리별 filter 기능 구현 (카테고리 메인 페이지, 상품 디테일 페이지) 
