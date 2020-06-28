@@ -1,17 +1,12 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import Reveal from 'react-reveal/Reveal';
-import Zoom from "react-reveal/Zoom";
 import Fade from "react-reveal/Fade";
-
 import {WIDTH800} from "../../Config"
 
 const MainHero = () => {
   return (
       <HeroWrap>
-        <Zoom duration={2000}>
         <IMG />
-        </Zoom>
         <HeroContent>
           <Fade bottom cascade delay={500} duration={1500}>
           <Title>Comfort is Relative™</Title>
