@@ -1,37 +1,38 @@
-import React, { useState, useEffect } from "react";
+import { Link, withRouter } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import styled, { css } from "styled-components";
-import { withRouter, Link } from "react-router-dom";
+
 import Header from "../../Component/Header/Header";
 
 const SignIn = ({ history }) => {
-
   const goToMain = () => {
-    history.push('/products');
-  }
+    history.push("/account");
+  };
 
   const loginWithKakao = () => {
     window.Kakao.Auth.login({
       success: (authObj) => {
         console.log("success : ", authObj);
-        fetch('http://10.58.5.130:8080/member/kakao', {
-      headers: {
-        "Authorization": authObj.access_token
-      },
-       }).then(res => res.json())
-       .then(res => {if(res.message === 'SUCCESS'){
-         localStorage.setItem("patago_token", res.token);
-         alert('Successfully Signed in!')
-         goToMain();
-       }
-       }) 
+        fetch("http://3.34.144.236:8080/member/kakao", {
+          headers: {
+            Authorization: authObj.access_token,
+          },
+        })
+          .then((res) => res.json())
+          .then((res) => {
+            if (res.message === "SUCCESS") {
+              localStorage.setItem("patago_token", res.token);
+              alert("Successfully Signed in!");
+              goToMain();
+            }
+          });
       },
       fail: function (err) {
-        alert('Sorry, Please Check your information again!')
+        alert("Sorry, Please Check your information again!");
         console.log("에러", err);
       },
-    })
+    });
   };
-
 
   return (
     <>
@@ -55,7 +56,7 @@ const SignIn = ({ history }) => {
               <Button>Sign In</Button>
               <Button
                 onClick={loginWithKakao}
-                style={{ "backgroundColor": "#FEE500", color: "black" }}
+                style={{ backgroundColor: "#FEE500", color: "black" }}
               >
                 Sign in with Kakao
               </Button>
@@ -168,7 +169,6 @@ const FindOrderSec = styled.section`
   border-radius: 3%;
   color: white;
   margin-top: 13%;
-
 `;
 
 const OrderContents = styled.div`
