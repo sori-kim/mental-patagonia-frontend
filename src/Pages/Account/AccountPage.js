@@ -1,17 +1,18 @@
+import { Link, withRouter } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import styled, { css } from "styled-components";
 
 import Button from "../../Component/Button/Button";
+import styled from "styled-components";
+import useInputState from "../../hooks/useInputState";
 
-const AccountPage = () => {
+const AccountPage = ({ history }) => {
   const token = localStorage.getItem("patago_token");
-  const [account, setAccount] = useState("");
-  const [firstname, setFirstname] = useState("");
-  const [lastname, setLastname] = useState("");
-  const [email, setEmail] = useState("");
+  const [firstname, setFirstname, handleChangeFirstname] = useInputState("");
+  const [lastname, setLastname, handleChangeLastname] = useInputState("");
+  const [email, setEmail, handleChangeEmail] = useInputState("");
 
   useEffect(() => {
-    fetch(`http://3.34.144.236:8080/member/`, {
+    fetch("http://3.34.144.236:8080/member/", {
       method: "GET",
       headers: {
         Authorization: token,
@@ -25,9 +26,11 @@ const AccountPage = () => {
       });
   }, []);
 
-  console.log("fistname", firstname);
-  console.log("lastname", lastname);
-  console.log("email", email);
+  const handleLogOut = () => {
+    localStorage.removeItem("patago_token");
+    history.push("/");
+  };
+
   return (
     <Wrap>
       <Title style={{ paddingTop: "20%" }}>Account</Title>
@@ -53,8 +56,12 @@ const AccountPage = () => {
                 <Value>**********</Value>
               </ProfileDetails>
               <ProfileBottom>
-                <Button style={{ width: "160px" }}>Logout</Button>
-                <Edit>Edit</Edit>
+                <Button onClick={handleLogOut} style={{ width: "160px" }}>
+                  Logout
+                </Button>
+                <Link to="/account/profile">
+                  <Edit>Edit</Edit>
+                </Link>
               </ProfileBottom>
             </ProfileWrap>
           </Profile>
@@ -96,7 +103,7 @@ const AccountPage = () => {
   );
 };
 
-export default AccountPage;
+export default withRouter(AccountPage);
 
 const Wrap = styled.div`
   height: 150vh;
